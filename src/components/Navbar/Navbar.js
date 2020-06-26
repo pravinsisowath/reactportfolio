@@ -1,7 +1,18 @@
 import React from 'react'
+import {
+  Switch,
+  Link,
+  Route,
+  BrowserRouter as Router
+} from 'react-router-dom'
+import PageOne from '../../pages/PageOne'
+import PageTwo from '../../pages/PageTwo'
+import PageThree from '../../pages/PageThree'
 
 const Navbar = () => {
   return (
+    <Router>
+    <div>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="google.com">Pravin Sisowath</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,8 +21,14 @@ const Navbar = () => {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
+        <li className="nav-item active">
+            <a className="nav-link"><Link to="/">Home</Link><span className="sr-only">(current)</span></a>
+          </li>
           <li className="nav-item active">
-            <a className="nav-link" href="google.com">Portfolio <span className="sr-only">(current)</span></a>
+            <a className="nav-link" href="google.com"><Link to="/portfolio">Portfolio</Link><span className="sr-only">(current)</span></a>
+          </li>
+          <li className="nav-item active">
+            <a className="nav-link" href="google.com"><Link to="/contact">Contact</Link><span className="sr-only">(current)</span></a>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">
@@ -20,6 +37,21 @@ const Navbar = () => {
         </form>
       </div>
     </nav>
+    <Switch>
+
+    <Route exact path="/">
+    <PageOne />
+    </Route>
+    <Route path="/portfolio">
+    <PageTwo />
+    </Route>
+    <Route path="/contact">
+    <PageThree /> 
+    </Route>
+
+</Switch>
+    </div>
+    </Router>
   )
 }
 
